@@ -124,7 +124,7 @@ header{
 	margin: 20px 0;
 	text-transform: uppercase;
 	letter-spacing: 2px;
-	text-shadow: -1px -1px 0px #000, 7px 7px 0px #000, 9px 9px 0px #00000055;/* paramétrer l'ombre du texte */
+	text-shadow: -1px -1px 0px #fff, 7px 7px 0px #fff, 9px 9px 0px #fff;/* paramétrer l'ombre du texte */
 }
  /* prenom */
 .hero-text h1 span{
