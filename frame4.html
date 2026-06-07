@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- linking google fonts for icons -->
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=arrow_forward" />
+	<!-- linking Font Awesome for copy icon (plus fiable) -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+	<!-- linking SwiperJS CSS -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+	<title>CONTACT</title>
+	<link rel="stylesheet" href="services2.css">
+	<style>
+		/* Nouveau style pour le bouton copier - adapté à tous les écrans */
+		.copy-container {
+			display: flex;
+			align-items: center;
+			gap: 8px;
+			margin-top: 20px;
+			flex-wrap: wrap;
+		}
+		
+		.copy-button {
+			display: inline-flex;
+			align-items: center;
+			gap: 6px;
+			background: none;
+			border: none;
+			cursor: pointer;
+			padding: 6px 12px;
+			border-radius: 30px;
+			font-size: 0.85rem;
+			font-weight: 500;
+			transition: all 0.3s ease;
+			background: #f0f0f0;
+			color: #333;
+		}
+		
+		.copy-button:hover {
+			background: #5372F0;
+			color: white;
+			transform: scale(1.02);
+		}
+		
+		.copy-button:hover .copy-icon {
+			color: white;
+		}
+		
+		.copy-button:active {
+			transform: scale(0.98);
+		}
+		
+		/* Icône copier avec Font Awesome */
+		.copy-icon {
+			font-size: 16px;
+			display: inline-block;
+		}
+		
+		/* Message de confirmation toast */
+		.toast-message {
+			position: fixed;
+			bottom: 30px;
+			left: 50%;
+			transform: translateX(-50%) translateY(100px);
+			background: #28a745;
+			color: white;
+			padding: 10px 20px;
+			border-radius: 40px;
+			font-size: 0.9rem;
+			font-weight: 500;
+			z-index: 9999;
+			opacity: 0;
+			transition: all 0.3s ease;
+			pointer-events: none;
+			box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+		}
+		
+		.toast-message.show {
+			transform: translateX(-50%) translateY(0);
+			opacity: 1;
+		}
+		
+		/* Ajustement pour les petits écrans */
+		@media screen and (max-width: 768px) {
+			.copy-button {
+				padding: 5px 10px;
+				font-size: 0.75rem;
+			}
+			
+			.copy-icon {
+				font-size: 14px;
+			}
+			
+			.copy-container {
+				gap: 5px;
+				margin-top: 15px;
+			}
+			
+			.card-list .card-link .card-title {
+				font-size: 0.95rem;
+				word-break: break-word;
+			}
+		}
+		
+		/* Ajustement pour très petits écrans (portable) */
+		@media screen and (max-width: 480px) {
+			.copy-button {
+				padding: 4px 8px;
+				font-size: 0.7rem;
+			}
+			
+			.copy-icon {
+				font-size: 12px;
+			}
+		}
+		
+		/* Ajustement pour les tablettes */
+		@media screen and (min-width: 769px) and (max-width: 1024px) {
+			.copy-container {
+				gap: 10px;
+			}
+			
+			.copy-button {
+				padding: 8px 14px;
+				font-size: 0.9rem;
+			}
+		}
+		
+		/* Remplacer le style du bouton flèche par défaut */
+		.card-list .card-link .card-button {
+			display: none;
+		}
+		
+		/* Espacement supplémentaire pour les cartes */
+		.card-list .card-item .card-link {
+			padding-bottom: 20px;
+		}
+		
+		/* Correction pour que la pagination suive bien le défilement */
+		.card-wrapper .swiper-pagination {
+			position: relative;
+			margin-top: 20px;
+			bottom: auto;
+		}
+		
+		.card-wrapper .swiper-pagination-bullet {
+			cursor: pointer;
+		}
+	</style>
+</head>
+<body>
+   <div class="container swiper">
+   	 <div class="card-wrapper">
+   	 	<ul class="card-list swiper-wrapper"> 
+   	 		<li class="card-item swiper-slide">
+   	 			<a href="javascript:void(0)" class="card-link">
+   	 				<img src="communication.png" alt="service 1" class="card-image">
+   	 				<p class="badge serv1">Email</p>
+   	 				<h2 class="card-title" id="emailText">Seckdiama183@gmail.com</h2>
+   	 				<div class="copy-container">
+   	 					<button class="copy-button" data-copy="email">
+   	 						<i class="copy-icon fa-regular fa-copy"></i>
+   	 						<span>Copier</span>
+   	 					</button>
+   	 				</div>
+
+   	 			</a>
+   	 		</li>
+   	 		<li class="card-item swiper-slide">
+   	 			<a href="javascript:void(0)" class="card-link">
+   	 				<img src="contact.png" alt="service 1" class="card-image">
+   	 				<p class="badge serv2">Contact</p>
+   	 				<h2 class="card-title" id="phoneText">77 396 43 90 / 76 765 60 70</h2>
+   	 				<div class="copy-container">
+   	 					<button class="copy-button" data-copy="phone">
+   	 						<i class="copy-icon fa-regular fa-copy"></i>
+   	 						<span>Copier</span>
+   	 					</button>
+   	 				</div>
+
+   	 			</a>
+   	 		</li>
+   	 		<li class="card-item swiper-slide">
+   	 			<a href="javascript:void(0)" class="card-link">
+   	 				<img src="location.png" alt="service 1" class="card-image">
+   	 				<p class="badge serv3">Adresse</p>
+   	 				<h2 class="card-title" id="addressText">Thiaroye sur mer Dakar-Sénégal</h2>
+   	 				<div class="copy-container">
+   	 					<button class="copy-button" data-copy="address">
+   	 						<i class="copy-icon fa-regular fa-copy"></i>
+   	 						<span>Copier</span>
+   	 					</button>
+   	 				</div>
+
+   	 			</a>
+   	 		</li>
+   	 		
+   	 	</ul>
+
+         <div class="swiper-pagination"></div>
+          <div class="swiper-slide-button swiper-button-prev"></div>
+          <div class="swiper-slide-button swiper-button-next"></div>
+   	 </div>
+   </div>
+   
+   <!-- Message toast pour confirmation de copie -->
+   <div id="toastMessage" class="toast-message">✓ Copié dans le presse-papier</div>
+   
+   <!-- linking SwiperJS script -->
+   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+   <!-- Script pour la fonctionnalité de copie -->
+   <script>
+   	// Initialisation du Swiper - CORRIGÉE
+   	const swiper = new Swiper('.card-wrapper', {
+   		loop: false,
+   		spaceBetween: 25,
+   		grabCursor: true,
+   		
+   		// Pagination - maintenant bien synchronisée
+   		pagination: {
+   			el: '.swiper-pagination',
+   			clickable: true,
+   			dynamicBullets: true,
+   		},
+   		
+   		// Navigation arrows
+   		navigation: {
+   			nextEl: '.swiper-button-next',
+   			prevEl: '.swiper-button-prev',
+   		},
+   		
+   		// Responsive breakpoints
+   		breakpoints: {
+   			0: {
+   				slidesPerView: 1
+   			},
+   			768: {
+   				slidesPerView: 2
+   			},
+   			1024: {
+   				slidesPerView: 3
+   			}
+   		},
+   		
+   		// Options supplémentaires pour améliorer l'expérience
+   		slideToClickedSlide: true,
+   		watchSlidesProgress: true,
+   		updateOnWindowResize: true,
+   		observer: true,
+   		observeParents: true,
+   	});
+   	
+   	// Fonction pour afficher le toast de confirmation
+   	function showToast(message) {
+   		const toast = document.getElementById('toastMessage');
+   		toast.textContent = message || '✓ Copié dans le presse-papier';
+   		toast.classList.add('show');
+   		setTimeout(() => {
+   			toast.classList.remove('show');
+   		}, 2000);
+   	}
+   	
+   	// Fonction pour copier du texte dans le presse-papier
+   	async function copyToClipboard(text, type) {
+   		try {
+   			await navigator.clipboard.writeText(text);
+   			let successMessage = '';
+   			switch(type) {
+   				case 'email':
+   					successMessage = '✓ Email copié';
+   					break;
+   				case 'phone':
+   					successMessage = '✓ Numéro copié';
+   					break;
+   				case 'address':
+   					successMessage = '✓ Adresse copiée';
+   					break;
+   				default:
+   					successMessage = '✓ Copié dans le presse-papier';
+   			}
+   			showToast(successMessage);
+   		} catch (err) {
+   			// Fallback pour les navigateurs plus anciens
+   			const textarea = document.createElement('textarea');
+   			textarea.value = text;
+   			document.body.appendChild(textarea);
+   			textarea.select();
+   			document.execCommand('copy');
+   			document.body.removeChild(textarea);
+   			
+   			let successMessage = '';
+   			switch(type) {
+   				case 'email':
+   					successMessage = '✓ Email copié';
+   					break;
+   				case 'phone':
+   					successMessage = '✓ Numéro copié';
+   					break;
+   				case 'address':
+   					successMessage = '✓ Adresse copiée';
+   					break;
+   				default:
+   					successMessage = '✓ Copié dans le presse-papier';
+   			}
+   			showToast(successMessage);
+   		}
+   	}
+   	
+   	// Ajout des écouteurs d'événements pour les boutons de copie
+   	document.querySelectorAll('.copy-button').forEach(button => {
+   		button.addEventListener('click', async (e) => {
+   			e.preventDefault();
+   			e.stopPropagation();
+   			
+   			const copyType = button.getAttribute('data-copy');
+   			let textToCopy = '';
+   			
+   			switch(copyType) {
+   				case 'email':
+   					textToCopy = document.getElementById('emailText').innerText;
+   					break;
+   				case 'phone':
+   					textToCopy = document.getElementById('phoneText').innerText;
+   					break;
+   				case 'address':
+   					textToCopy = document.getElementById('addressText').innerText;
+   					break;
+   				default:
+   					textToCopy = '';
+   			}
+   			
+   			if (textToCopy) {
+   				await copyToClipboard(textToCopy, copyType);
+   			}
+   		});
+   	});
+   </script>
+   <!-- linking custom script (si fichier existe toujours) -->
+   <script src="services2.js"></script>
+</body>
+</html>
